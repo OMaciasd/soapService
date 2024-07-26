@@ -12,43 +12,23 @@ git clone --recursive --depth=1 https://github.com/OMaciasd/soapService.git
 
 ## 2. **Instalar IIS y Componentes Necesarios.**
 
-**Comandos:** Los comandos **PowerShell** deben ejecutarse con privilegios de administrador.
-
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebServerRole, IIS-WebServer, IIS-ManagementConsole, IIS-ASPNET45, IIS-NetFxExtensibility45 -All
-```
+**Comandos:** El `MainScript.ps1` de **PowerShell** debe ejecutarse con privilegios de administrador.
 
 ![alt text][powershell]
 
 ## 3. **Crear el Application Pool.**
 
-```powershell
-& "$env:SystemRoot\System32\inetsrv\appcmd.exe" add apppool /name:"soapServiceAppPool"
-```
-
 ![alt text][iis]
 
 ## 4. **Crear el Directorio Físico para el Sitio.**
-
-```powershell
-Copy-Item -Path .\src\ -Destination "C:\inetpub\wwwroot\soapService" -Recurse -Force
-```
 
 ![alt text][explorer]
 
 ## 5. **Crear el Sitio Web en el Puerto 8083.**
 
-```powershell
-& "$env:SystemRoot\System32\inetsrv\appcmd.exe" add site /name:"soapService" /bindings:http/*:8083: /physicalPath:"C:\inetpub\wwwroot\soapService"
-```
-
 ![alt text][port]
 
 ## 6. **Asignar el Application Pool al Sitio Web.**
-
-```powershell
-& "$env:SystemRoot\System32\inetsrv\appcmd.exe" set app /app.name:"soapService/" /applicationPool:"soapServiceAppPool"
-```
 
 ![alt text][sites]
 
@@ -56,9 +36,7 @@ Copy-Item -Path .\src\ -Destination "C:\inetpub\wwwroot\soapService" -Recurse -F
 
 - Obtener WSDL:
 
-```powershell
-curl -L -v "http://localhost:8083/Service.asmx?WSDL"
-```
+![alt text][curl]
 
 - Hacer una Llamada SOAP:
 
@@ -73,3 +51,4 @@ curl -L -v "http://localhost:8083/Service.asmx?WSDL"
 [port]: assets/images/port.png
 [sites]: assets/images/sites.png
 [soapui]: assets/images/soapui.png
+[curl]: curl.png
