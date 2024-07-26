@@ -8,7 +8,9 @@ Este documento proporciona una guía rápida con los comandos utilizados para co
 git clone --recursive --depth=1 https://github.com/OMaciasd/soapService.git
 ```
 
-## 1. **Instalar IIS y Componentes Necesarios.**
+![alt text](image-7.png)
+
+## 2. **Instalar IIS y Componentes Necesarios.**
 
 ```powershell as Admin
 Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebServerRole, IIS-WebServer, IIS-ManagementConsole, IIS-ASPNET45, IIS-NetFxExtensibility45 -All
@@ -16,7 +18,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebServerRole, IIS-WebSer
 
 ![alt text](image-1.png)
 
-## 2. **Crear el Application Pool.**
+## 3. **Crear el Application Pool.**
 
 ```powershell
 & "$env:SystemRoot\System32\inetsrv\appcmd.exe" add apppool /name:"soapServiceAppPool"
@@ -24,7 +26,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebServerRole, IIS-WebSer
 
 ![alt text](image-2.png)
 
-## 3. **Crear el Directorio Físico para el Sitio.**
+## 4. **Crear el Directorio Físico para el Sitio.**
 
 ```powershell as Admin
 New-Item -Path "C:\inetpub\wwwroot\soapService" -ItemType Directory
@@ -32,7 +34,7 @@ New-Item -Path "C:\inetpub\wwwroot\soapService" -ItemType Directory
 
 ![alt text](image-5.png)
 
-## 4. **Crear el Sitio Web en el Puerto 8083.**
+## 5. **Crear el Sitio Web en el Puerto 8083.**
 
 ```powershell
 & "$env:SystemRoot\System32\inetsrv\appcmd.exe" add site /name:"soapService" /bindings:http/*:8083: /physicalPath:"C:\inetpub\wwwroot\soapService"
@@ -40,7 +42,7 @@ New-Item -Path "C:\inetpub\wwwroot\soapService" -ItemType Directory
 
 ![alt text](image-6.png)
 
-## 5. **Asignar el Application Pool al Sitio Web.**
+## 6. **Asignar el Application Pool al Sitio Web.**
 
 ```powershell
 & "$env:SystemRoot\System32\inetsrv\appcmd.exe" set app /app.name:"soapService/" /applicationPool:"soapServiceAppPool"
@@ -48,7 +50,7 @@ New-Item -Path "C:\inetpub\wwwroot\soapService" -ItemType Directory
 
 ![alt text](image-3.png)
 
-## 6. **Verificar el Servicio Web SOAP.**
+## 7. **Verificar el Servicio Web SOAP.**
 
 - Obtener WSDL:
 
