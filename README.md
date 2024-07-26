@@ -2,6 +2,12 @@
 
 Este documento proporciona una guía rápida con los comandos utilizados para configurar un servicio web SOAP en IIS usando PowerShell y `appcmd.exe`.
 
+## 1. **Clonar el repositorio.**
+
+```git
+git clone --recursive --depth=1 https://github.com/OMaciasd/soapService.git
+```
+
 ## 1. **Instalar IIS y Componentes Necesarios.**
 
 ```powershell as Admin
