@@ -12,7 +12,8 @@ git clone --recursive --depth=1 https://github.com/OMaciasd/soapService.git
 
 ## 2. **Instalar IIS y Componentes Necesarios.**
 
-**Comandos:** El `MainScript.ps1` de **PowerShell** debe ejecutarse con privilegios de administrador.
+- **Variables:** Setear desde `.\IIS-Script\config.json`.
+- **Comandos:** El `.\IIS-Script\MainScript.exe` de **PowerShell** debe ejecutarse con privilegios de administrador.
 
 ![alt text][powershell]
 
@@ -36,6 +37,10 @@ git clone --recursive --depth=1 https://github.com/OMaciasd/soapService.git
 
 - Obtener WSDL:
 
+```powershell
+curl -v "http://localhost:8083/Service.asmx?WSDL"
+```
+
 ![alt text][curl]
 
 - Hacer una Llamada SOAP:
@@ -51,4 +56,4 @@ git clone --recursive --depth=1 https://github.com/OMaciasd/soapService.git
 [port]: assets/images/port.png
 [sites]: assets/images/sites.png
 [soapui]: assets/images/soapui.png
-[curl]: curl.png
+[curl]: assets/images/curl.png
