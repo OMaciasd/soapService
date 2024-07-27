@@ -1,0 +1,9 @@
+{
+  "sourcePath": "..\\src\\",
+  "destinationPath": "C:\\inetpub\\wwwroot\\soapService",
+  "siteName": "soapService",
+  "bindings": "http/*:8083:",
+  "physicalPath": "C:\\inetpub\\wwwroot\\soapService",
+  "appPoolName": "soapServiceAppPool",
+  "testUrl": "http://localhost:8083/Service.asmx?WSDL"
+}
