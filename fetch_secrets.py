@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import os
 import hvac
 
@@ -32,3 +33,61 @@ with open('certificates/request.csr', 'w') as f:
     f.write(request_csr)
 
 print("Certificados obtenidos y guardados exitosamente.")
+=======
+import hvac
+import os
+from dotenv import load_dotenv
+import base64
+
+load_dotenv('config.env')
+
+client = hvac.Client(url='http://127.0.0.1:8200', token=os.environ.get('VAULT_TOKEN'))
+
+
+def fetch_secret(path):
+    try:
+        response = client.secrets.kv.v1.read_secret(path=path)
+        return response['data']['value']  # Asegúrate de obtener el valor del secreto
+    except hvac.exceptions.InvalidRequest as e:
+        print(f"Error de solicitud para {path}: {e}")
+    except Exception as e:
+        print(f"Error al obtener el secreto {path}: {e}")
+    return None
+
+
+certificate_crt = fetch_secret('certificates/certificate.crt')
+private_key = fetch_secret('certificates/private.key')
+certificate_pfx = fetch_secret('certificates/certificate.pfx')
+request_csr = fetch_secret('certificates/request.csr')
+
+if all([certificate_crt, private_key, certificate_pfx, request_csr]):
+    print("Certificado:", certificate_crt)
+    print("Clave privada:", private_key)
+    print("Certificado PFX:", certificate_pfx[:100])  # Imprime los primeros 100 caracteres para depuración
+    print("Solicitud CSR:", request_csr)
+
+    with open('certificate.crt', 'w') as cert_file:
+        cert_file.write(certificate_crt)
+
+    with open('private.key', 'w') as key_file:
+        key_file.write(private_key)
+
+    with open('request.csr', 'w') as csr_file:
+        csr_file.write(request_csr)
+
+    if certificate_pfx:
+        try:
+            # Verifica si la cadena contiene caracteres no válidos
+            if all(c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=' for c in certificate_pfx):
+                pfx_data = base64.b64decode(certificate_pfx)
+                with open('certificate.pfx', 'wb') as pfx_file:
+                    pfx_file.write(pfx_data)
+            else:
+                print("El PFX contiene caracteres no válidos.")
+        except Exception as e:
+            print(f"Error al decodificar el PFX: {e}")
+
+    print("Certificados obtenidos y guardados exitosamente.")
+else:
+    print("No se pudieron obtener todos los secretos.")
+>>>>>>> f91d945 (🔀 feat(soap): Add vault secrets (#6))
