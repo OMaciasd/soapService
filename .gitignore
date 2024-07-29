@@ -4,3 +4,7 @@ obj/
 certificates/
 *.json
 .mypy_cache/
+<<<<<<< HEAD
+=======
+*.env
+>>>>>>> f91d945 (🔀 feat(soap): Add vault secrets (#6))
