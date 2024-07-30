@@ -1,13 +1,10 @@
-param (
-	[string]$appName,
-	[string]$appPoolName
-)
-
 Write-Output "***********************************"
 Write-Output "** Script developed by Omaciasd. **"
 Write-Output "***********************************"
 Write-Output ""
 
-& "$env:SystemRoot\System32\inetsrv\appcmd.exe" set app /app.name:$appName /applicationPool:$appPoolName
+curl -v "http://localhost:8083/Service.asmx?WSDL"
+
+sleep 5
 
 Clear-host

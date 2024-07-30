@@ -1,10 +1,40 @@
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Directorios de entornos virtuales
+venv/
+env/
+.virtualenv/
+
+# Archivos de configuración de entorno
+.env
+
+# Archivos de logs
+logs/
+*.log
+
+# Archivos de compilación
+build/
+dist/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Archivos binarios
+*.exe
+
+# Configuración de IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
 node_modules/
 bin/
 obj/
 certificates/
 *.json
 .mypy_cache/
-<<<<<<< HEAD
-=======
-*.env
->>>>>>> f91d945 (🔀 feat(soap): Add vault secrets (#6))
+*.bkp
