@@ -1,6 +1,11 @@
+Write-Output "***********************************"
 Write-Output "** Script developed by Omaciasd. **"
+Write-Output "***********************************"
+Write-Output ""
 
 $config = Get-Content -Path "..\config\config.json" | ConvertFrom-Json
+
+Clear-host
 
 .\Enable-IISFeatures.ps1
 
@@ -11,3 +16,5 @@ $config = Get-Content -Path "..\config\config.json" | ConvertFrom-Json
 .\Add-Website.ps1 -siteName $config.siteName -bindings $config.bindings -physicalPath $config.physicalPath
 
 .\Set-AppPool.ps1 -appName "$($config.siteName)/" -appPoolName $config.appPoolName
+
+..\src\test\test_Service.ps1

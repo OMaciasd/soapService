@@ -2,6 +2,8 @@
 
 Este documento proporciona una guía rápida con los comandos utilizados para configurar un servicio web SOAP en IIS usando PowerShell y `appcmd.exe`.
 
+![alt text][diagram]
+
 ## 1. **Clonar el repositorio.**
 
 ```git
@@ -13,7 +15,7 @@ git clone --recursive --depth=1 https://github.com/OMaciasd/soapService.git
 ## 2. **Instalar IIS y Componentes Necesarios.**
 
 - **Variables:** Setear desde `.\IIS-Script\config.json`.
-- **Comandos:** El `.\IIS-Script\MainScript.exe` de **PowerShell** debe ejecutarse con privilegios de administrador.
+- **Comandos:** El `.\IIS-Script\MainScript.ps1` de **PowerShell** debe ejecutarse con privilegios de administrador.
 
 ![alt text][powershell]
 
@@ -37,10 +39,6 @@ git clone --recursive --depth=1 https://github.com/OMaciasd/soapService.git
 
 - Obtener WSDL:
 
-```powershell
-curl -v "http://localhost:8083/Service.asmx?WSDL"
-```
-
 ![alt text][curl]
 
 - Hacer una Llamada SOAP:
@@ -57,3 +55,4 @@ curl -v "http://localhost:8083/Service.asmx?WSDL"
 [sites]: assets/images/sites.png
 [soapui]: assets/images/soapui.png
 [curl]: assets/images/curl.png
+[diagram]: assets/images/diagram.png
