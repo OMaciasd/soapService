@@ -1,5 +1,5 @@
 {
-  "sourcePath": "..\\src\\",
+  "sourcePath": "..\\src\\main\\",
   "destinationPath": "C:\\inetpub\\wwwroot\\soapService",
   "siteName": "soapService",
   "bindings": "http/*:8083:",

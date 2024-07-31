@@ -7,7 +7,7 @@ Este documento proporciona una guía rápida con los comandos utilizados para co
 ## 1. **Clonar el repositorio.**
 
 ```git
-git clone --recursive --depth=1 https://github.com/OMaciasd/soapService.git
+git clone --recursive --depth=1 https://github.com/OMaciasd/soapService.git; cd .\soapService\
 ```
 
 ![alt text][git]
